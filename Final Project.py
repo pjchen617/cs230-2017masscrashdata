@@ -6,8 +6,7 @@ URL:        Link to your web application on Streamlit Cloud (if posted)
 
 Description:
 
-This Streamlit application visualizes car crash data from Massachusetts in 2017, allowing users to explore details through interactive 
-maps and charts. Users can filter crashes by severity and location, and analyze crash causes in different cities and towns.
+This Streamlit application visualizes car crash data from Massachusetts in 2017, allowing users to explore details through interactive maps and charts. Users can filter crashes by severity and location, and analyze crash causes in different cities and towns.
 """
 
 import streamlit as st
@@ -24,8 +23,7 @@ df = read_data()
 
 # Creating the scatterplot map with streamlit and pydeck (https://deckgl.readthedocs.io/en/latest/index.html - used to
 # learn mapping functions)
-# [VIZ4] At least one detailed map (st.map will only get you partial credit) – for full credit, include dots, icons, text that appears when 
-hovering over a marker, or other map features
+# [VIZ4] At least one detailed map (st.map will only get you partial credit) – for full credit, include dots, icons, text that appears when hovering over a marker, or other map features
 def crashmap():
     st.header(":green[Map Of Crashes in Massachusetts]", divider="rainbow")
 
@@ -136,8 +134,7 @@ def severity_analysis_charts():
     filtered_df['CRASH_HOUR'] = pd.to_datetime(filtered_df['CRASH_TIME'], format='%I:%M %p').dt.hour
 
     # Pivot table to organize data by both hour and city/town
-    pivot_table_hour_city = filtered_df.pivot_table(index='CRASH_HOUR',columns=['CITY_TOWN_NAME', 'CRASH_SEVERITY_DESCR'],values='CRASH_NUMB', 
-                                                    aggfunc='count', fill_value=0)
+    pivot_table_hour_city = filtered_df.pivot_table(index='CRASH_HOUR',columns=['CITY_TOWN_NAME', 'CRASH_SEVERITY_DESCR'],values='CRASH_NUMB', aggfunc='count', fill_value=0)
 
     # Plotting the data
     plt.figure(figsize=(10, 6))
@@ -227,18 +224,15 @@ def sidebar():
 
     if selected == "Crash Map":
         st.title("Overview of Massachusetts Car Crashes")
-        st.write("This section provides a visual map highlighting the locations of car crashes in Massachusetts for the year 2017. 
-        Explore the map to see detailed information on each crash, including severity, conditions, and more.")
+        st.write("This section provides a visual map highlighting the locations of car crashes in Massachusetts for the year 2017. Explore the map to see detailed information on each crash, including severity, conditions, and more.")
         crashmap()
     elif selected == "Crash Severity Analysis":
         st.title("Detailed Crash Severity Analysis")
-        st.write("This section allows you to filter the data based on city/town and severity to see detailed bar charts showing the 
-        distribution of crash severities.")
+        st.write("This section allows you to filter the data based on city/town and severity to see detailed bar charts showing the distribution of crash severities.")
         severity_analysis_charts()
     if selected == "Crash Causes":
         st.title("Analysis of Crash Causes")
-        st.write("This section provides insights into the causes of crashes. You can view an overall pie chart of crash causes or 
-        filter by city/town to see specific distributions of crash causes in different locations.")
+        st.write("This section provides insights into the causes of crashes. You can view an overall pie chart of crash causes or filter by city/town to see specific distributions of crash causes in different locations.")
         all_causes, top_causes = crash_cause()
         st.write("All Crash Causes:", all_causes)
 
