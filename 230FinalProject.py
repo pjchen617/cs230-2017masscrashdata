@@ -18,7 +18,7 @@ st.set_page_config(layout="wide")
 
 # [PY3] A function that returns a value and is called in at least two different places in your program
 def read_data():
-    return pd.read_csv("2017_Crashes_10000_sample.csv")
+    return pd.read_csv("2017_Crashes_10000_sample.csv", low_memory=False)
 df = read_data()
 
 # Creating the scatterplot map with streamlit and pydeck (https://deckgl.readthedocs.io/en/latest/index.html - used to
